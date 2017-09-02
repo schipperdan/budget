@@ -1,0 +1,16 @@
+.input-group {
+    margin: 20px 0px;    
+}
+
+.list-group {
+    margin: 20px 0px;    
+}
+
+.list-group-item:hover {
+    background-color: #eee;  
+}
+
+td, th {
+    vertical-align: middle !important;
+    text-align: center !important;
+}
