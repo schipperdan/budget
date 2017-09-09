@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { selectBudget } from '../actions/index.js';
 
 class BudgetList extends Component {
     render() {
@@ -12,8 +14,15 @@ class BudgetList extends Component {
 
     renderBudgets() {
         return this.props.budgets.map((budget) => {
+
+            console.log(this.props.selectedBudget);
             return (
-                <li className="list-group-item" key={budget.budgetName}>{budget.budgetName}</li>
+                <li
+                    className={(this.props.selectedBudget === budget) ? "list-group-item active" : "list-group-item"}
+                    key={budget.budgetName}
+                    onClick={() => this.props.selectBudget(budget)}>
+                    {budget.budgetName}
+                </li>
             )
         })
     }
@@ -21,8 +30,13 @@ class BudgetList extends Component {
 
 function mapStateToProps(state) {
     return {
-        budgets: state.budgets
+        budgets: state.budgets,
+        selectedBudget: state.selectedBudget
     }
 }
 
-export default connect(mapStateToProps)(BudgetList);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ selectBudget }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetList);

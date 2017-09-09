@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { FETCH_BUDGET } from '../actions/index';
 
 export default function (state = [], action) {

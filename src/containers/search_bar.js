@@ -23,7 +23,7 @@ class SearchBar extends Component {
 
         // get budget data
         this.props.fetchBudgets(this.state.term);
-        
+
         this.setState({ term: '' });
     }
 
